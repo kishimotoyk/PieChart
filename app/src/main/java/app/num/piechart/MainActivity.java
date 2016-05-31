@@ -11,6 +11,19 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 
+/*
+app直下のbuild.gradleに以下の文を追加
+
+repositories {
+    maven { url "https://jitpack.io" }
+}
+
+dependencies {
+    compile 'com.github.PhilJay:MPAndroidChart:v2.1.6'
+}
+
+
+*/
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -46,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         pieChart.setData(data);
 
         pieChart.animateY(2000);
-        //アニメーションの時間設定小さくなればはやい
+        //アニメーションの時間設定小さくなればはやい 無効にすることも可能
 
         pieChart.saveToGallery("/sd/mychart.jpg", 85); // 85 is the quality of the image
 
