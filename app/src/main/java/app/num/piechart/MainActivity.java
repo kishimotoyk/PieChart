@@ -2,6 +2,7 @@ package app.num.piechart;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.graphics.Color;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.Entry;
@@ -35,26 +36,18 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<Entry> entries = new ArrayList<>();
         //グラフにデータを追加
-        entries.add(new Entry(4f, 0));
-        entries.add(new Entry(8f, 1));
-        entries.add(new Entry(6f, 2));
-        entries.add(new Entry(12f, 3));
-        entries.add(new Entry(18f, 4));
-        entries.add(new Entry(9f, 5));
+        entries.add(new Entry(10, 0));
+        entries.add(new Entry(8, 1));
 
         PieDataSet dataset = new PieDataSet(entries, "# of Calls");
 
         ArrayList<String> labels = new ArrayList<String>();
         //データの名前の設定
-        labels.add("January");
-        labels.add("February");
-        labels.add("March");
-        labels.add("April");
-        labels.add("May");
-        labels.add("June");
+        labels.add("残り予算");
+        labels.add("課金額");
 
         PieData data = new PieData(labels, dataset);
-        dataset.setColors(ColorTemplate.COLORFUL_COLORS); //
+        dataset.setColors(ColorTemplate.COLORFUL_COLORS);
         pieChart.setDescription("Description");
         pieChart.setData(data);
 
@@ -62,6 +55,17 @@ public class MainActivity extends AppCompatActivity {
         //アニメーションの時間設定小さくなればはやい 無効にすることも可能
 
         pieChart.saveToGallery("/sd/mychart.jpg", 85); // 85 is the quality of the image
+
+        pieChart.setDrawHoleEnabled(true);
+        //真ん中に円状の穴を開けるか開けないか
+
+        pieChart.setDrawCenterText(true);
+        //真ん中の円状の穴にテキスト表示
+        pieChart.setCenterText("残り予算\n~円");
+        //テキストの内容
+        pieChart.setRotationEnabled(false);
+        //円グラフを触って回転させるかさせないか
+
 
 
 
